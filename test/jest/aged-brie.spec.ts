@@ -1,3 +1,4 @@
+import { MAX_QUALITY } from '@/constants';
 import { Item, GildedRose } from '@/gilded-rose';
 
 describe('Aged Brie', () => {
@@ -22,6 +23,6 @@ describe('Aged Brie', () => {
     const gildedRose = new GildedRose([new Item('Aged Brie', 5, 50)]);
     const items = gildedRose.updateQuality();
     
-    expect(items[0].quality).toBe(50);
+    expect(items[0].quality).toBe(MAX_QUALITY);
   });
 });

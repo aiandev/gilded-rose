@@ -1,3 +1,4 @@
+import { MIN_QUALITY } from '@/constants';
 import { Item, GildedRose } from '@/gilded-rose';
 
 describe('Default Items', () => {
@@ -26,6 +27,6 @@ describe('Default Items', () => {
   it('should never have negative quality', () => {
     const gildedRose = new GildedRose([new Item('Default Item', 0, 0)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].quality).toBe(0);
+    expect(items[0].quality).toBe(MIN_QUALITY);
   });
 });

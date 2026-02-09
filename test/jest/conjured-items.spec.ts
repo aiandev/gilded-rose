@@ -1,3 +1,4 @@
+import { MIN_QUALITY } from '@/constants';
 import { Item, GildedRose } from '@/gilded-rose';
 
 describe('Conjured Items', () => {
@@ -19,6 +20,6 @@ describe('Conjured Items', () => {
     const gildedRose = new GildedRose([new Item('Conjured', 0, 0)]);
     const items = gildedRose.updateQuality();
     
-    expect(items[0].quality).toBe(0);
+    expect(items[0].quality).toBe(MIN_QUALITY);
   });
 });
