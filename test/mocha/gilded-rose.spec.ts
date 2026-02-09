@@ -1,5 +1,6 @@
+import { Item } from '@/models/item';
 import { expect } from 'chai';
-import { Item, GildedRose } from '@/gilded-rose';
+import {  GildedRose } from '@/gilded-rose';
 
 describe('Gilded Rose', () => {
   it('should foo', () => {

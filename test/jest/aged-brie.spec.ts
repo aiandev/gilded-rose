@@ -1,5 +1,6 @@
 import { MAX_QUALITY } from '@/constants';
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose } from '@/gilded-rose';
+import { Item } from '@/models/item';
 
 describe('Aged Brie', () => {
   // "Aged Brie" actually increases in Quality the older it gets

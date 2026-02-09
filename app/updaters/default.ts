@@ -1,4 +1,4 @@
-import { Item } from "@/gilded-rose";
+import { Item } from "@/models/item";
 import { decrementQuality, decrementSellIn, isExpired } from "@/helper";
 
 export function updateDefault(item: Item): void {

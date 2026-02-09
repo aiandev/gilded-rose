@@ -1,4 +1,4 @@
-import { Item } from "@/gilded-rose";
+import { Item } from "@/models/item";
 import { SULFURAS_QUALITY } from "../constants/quality";
 
 export function updateSulfuras(item: Item): void {

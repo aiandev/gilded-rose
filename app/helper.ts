@@ -1,4 +1,4 @@
-import { Item } from "./gilded-rose";
+import { Item } from "./models/item";
 import { MAX_QUALITY, MIN_QUALITY } from "./constants";
 
 export function increaseQuality(item: Item, amount = 1) {

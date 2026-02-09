@@ -1,4 +1,5 @@
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose } from '@/gilded-rose';
+import { Item } from '@/models/item';
 
 describe('Backstage Passes', () => {
   it('should increase quality by 1 when more than 10 days left', () => {

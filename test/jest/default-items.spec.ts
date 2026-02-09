@@ -1,5 +1,6 @@
 import { MIN_QUALITY } from '@/constants';
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose } from '@/gilded-rose';
+import { Item } from '@/models/item';
 
 describe('Default Items', () => {
   let gildedRose: GildedRose;

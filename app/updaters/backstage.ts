@@ -1,4 +1,4 @@
-import { Item } from "@/gilded-rose";
+import { Item } from "@/models/item";
 import { decrementSellIn, increaseQuality, isExpired } from "@/helper";
 import { BACKSTAGE_TIER_1, BACKSTAGE_TIER_2 } from "@/constants";
 

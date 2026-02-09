@@ -1,5 +1,4 @@
-import { Item } from "@/gilded-rose";
-import { MAX_QUALITY } from "../constants/quality";
+import { Item } from "@/models/item";
 import { decrementSellIn, increaseQuality, isExpired } from "@/helper";
 
 export function updateAgedBrie(item: Item): void {

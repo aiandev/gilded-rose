@@ -1,5 +1,5 @@
 
-import { Item } from "@/gilded-rose";
+import { Item } from "@/models/item";
 import { itemNames } from "@/constants";
 import {  updateDefault } from "../updaters/default";
 import { updateSulfuras } from "@/updaters/sulfuras";
