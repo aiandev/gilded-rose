@@ -30,48 +30,4 @@ export class GildedRose {
 
     return this.items;
   }
-
-
-  updateQualityItem(item: Item) {
-    if (item.name == itemNames.SULFURAS) {
-      return;
-    }
-
-    const increasingQualityItems = [
-      itemNames.AGED_BRIE,
-      itemNames.BACKSTAGE,
-    ]
-
-    if (increasingQualityItems.includes(item.name)) {
-        
-      item.quality = Math.min(item.quality + 1, MAX_QUALITY);
-
-      if (item.name == itemNames.BACKSTAGE) {
-        if (item.sellIn < 11) {
-          item.quality = Math.min(item.quality + 1, MAX_QUALITY);
-        }
-        if (item.sellIn < 6) {
-          item.quality = Math.min(item.quality + 1, MAX_QUALITY); 
-        }
-      }
-    } else { 
-      item.quality = Math.max(item.quality - 1, MIN_QUALITY);
-    }
-  }
-
-  updateQualityExpiredItem(item: Item) {
-    if(item.name == itemNames.SULFURAS ||  isExpired(item) == false){
-      return;
-    }
-    if (item.name == itemNames.AGED_BRIE) {
-      item.quality = Math.min(item.quality + 1, MAX_QUALITY);
-    } else {
-      if (item.name == itemNames.BACKSTAGE) {
-        item.quality = MIN_QUALITY;
-      } else {
-        item.quality = Math.max(item.quality - 1, MIN_QUALITY);
-      }
-    }
-  }
-  
 }
