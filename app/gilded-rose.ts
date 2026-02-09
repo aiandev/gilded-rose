@@ -11,6 +11,16 @@ export class Item {
   }
 }
 
+const Max_QUALITY = 50;
+const Min_QUALITY = 0;
+
+const productsNames = {
+  AGED_BRIE: "Aged Brie",
+  SULFURAS: "Sulfuras, Hand of Ragnaros",
+  BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert"
+}
+
+
 export class GildedRose {
   items: Array<Item>;
 
@@ -21,44 +31,17 @@ export class GildedRose {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
 
-      if (this.items[i].name == "Sulfuras, Hand of Ragnaros") {
+      if (this.items[i].name == productsNames.SULFURAS) {
         continue;
       }
 
-      const itemsToIncrease = [
-        "Aged Brie",
-        "Backstage passes to a TAFKAL80ETC concert",
-      ];
-
-      if (itemsToIncrease.includes(this.items[i].name)) {
-        this.items[i].quality = Math.min(this.items[i].quality + 1, Max_QUALITY);
-        if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
-          if (this.items[i].sellIn < 11) {
-            this.items[i].quality = Math.min(this.items[i].quality + 1, Max_QUALITY);
-          }
-          if (this.items[i].sellIn < 6) {
-            this.items[i].quality = Math.min(this.items[i].quality + 1, Max_QUALITY); 
-          }
-        }
-      } else {
-        this.items[i].quality = Math.max(this.items[i].quality - 1, Min_QUALITY);
-      }
-
+      this.updateQualityItem(this.items[i]);
+    
+      // decrease sellIn for all items except Sulfuras which already ignored at the beginning of the loop
       this.items[i].sellIn = this.items[i].sellIn - 1;
 
-      // expired items
       if (this.isExpired(this.items[i])) {
-        if (this.items[i].name == "Aged Brie") {
-          this.items[i].quality = Math.min(this.items[i].quality + 1, Max_QUALITY);
-        } else {
-          if (
-            this.items[i].name == "Backstage passes to a TAFKAL80ETC concert"
-          ) {
-            this.items[i].quality = Min_QUALITY;
-          } else {
-            this.items[i].quality = Math.max(this.items[i].quality - 1, Min_QUALITY);
-          }
-        }
+        this.updateQualityExpiredItem(this.items[i]);
       }
     }
 
@@ -67,6 +50,48 @@ export class GildedRose {
 
   isExpired(item: Item): boolean {
     return item.sellIn < 0;
+  }
+
+  updateQualityItem(item: Item) {
+    if (item.name == productsNames.SULFURAS) {
+      return;
+    }
+
+    const increasingQualityItems = [
+      productsNames.AGED_BRIE,
+      productsNames.BACKSTAGE_PASSES,
+    ];
+
+    if (increasingQualityItems.includes(item.name)) {
+        
+      item.quality = Math.min(item.quality + 1, Max_QUALITY);
+
+      if (item.name == productsNames.BACKSTAGE_PASSES) {
+        if (item.sellIn < 11) {
+          item.quality = Math.min(item.quality + 1, Max_QUALITY);
+        }
+        if (item.sellIn < 6) {
+          item.quality = Math.min(item.quality + 1, Max_QUALITY); 
+        }
+      }
+    } else { 
+      item.quality = Math.max(item.quality - 1, Min_QUALITY);
+    }
+  }
+
+  updateQualityExpiredItem(item: Item) {
+    if(item.name == productsNames.SULFURAS ||  this.isExpired(item) == false){
+      return;
+    }
+    if (item.name == productsNames.AGED_BRIE) {
+      item.quality = Math.min(item.quality + 1, Max_QUALITY);
+    } else {
+      if (item.name == productsNames.BACKSTAGE_PASSES) {
+        item.quality = Min_QUALITY;
+      } else {
+        item.quality = Math.max(item.quality - 1, Min_QUALITY);
+      }
+    }
   }
   
 }
