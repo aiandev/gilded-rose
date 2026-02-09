@@ -1,9 +1,7 @@
 
 import { Item } from "@/gilded-rose";
 import { itemNames } from "@/constants";
-import {  updateDefault } from "../updaters/default";
-import { updateSulfuras } from "@/updaters/sulfuras";
-import { updateAgedBrie, updateBackstage, updateConjured } from "@/updaters";
+import { updateAgedBrie, updateBackstage, updateConjured, updateDefault, updateSulfuras } from "@/updaters";
 
 type Updater = (item: Item) => void;
 
