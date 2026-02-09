@@ -2,7 +2,8 @@ export class Item {
   name: string;
   sellIn: number;
   quality: number;
-
+  /** validate quality not negative and not more than 50, except for Sulfuras which is always 80 
+  I didn't touch it becuase the requirment asked me don't update item or items */
   constructor(name, sellIn, quality) {
     this.name = name;
     this.sellIn = sellIn;
