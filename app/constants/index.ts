@@ -1,2 +1,2 @@
 export * from "./quality";
-export * from "./itemNames";
+export * from "./item-names";
