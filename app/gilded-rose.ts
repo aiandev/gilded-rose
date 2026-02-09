@@ -1,4 +1,5 @@
 import { itemNames, MAX_QUALITY, MIN_QUALITY } from "./constants";
+import { isExpired } from "./helper";
 
 export class Item {
   name: string;
@@ -33,7 +34,7 @@ export class GildedRose {
       // decrease sellIn for all items except Sulfuras which already ignored at the beginning of the loop
       this.items[i].sellIn = this.items[i].sellIn - 1;
 
-      if (this.isExpired(this.items[i])) {
+      if (isExpired(this.items[i])) {
         this.updateQualityExpiredItem(this.items[i]);
       }
     }
@@ -41,9 +42,6 @@ export class GildedRose {
     return this.items;
   }
 
-  isExpired(item: Item): boolean {
-    return item.sellIn < 0;
-  }
 
   updateQualityItem(item: Item) {
     if (item.name == itemNames.SULFURAS) {
@@ -73,7 +71,7 @@ export class GildedRose {
   }
 
   updateQualityExpiredItem(item: Item) {
-    if(item.name == itemNames.SULFURAS ||  this.isExpired(item) == false){
+    if(item.name == itemNames.SULFURAS ||  isExpired(item) == false){
       return;
     }
     if (item.name == itemNames.AGED_BRIE) {
