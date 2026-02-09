@@ -1,12 +1,12 @@
 import { Item } from "@/gilded-rose";
-import { MIN_QUALITY } from "../constants/quality";
-import { isExpired } from "@/helper";
+import { decrementQuality, decrementSellIn, isExpired } from "@/helper";
 
 export function updateDefault(item: Item): void {
-  item.quality = Math.max(MIN_QUALITY, item.quality - 1);
+  decrementQuality(item);
   
-  item.sellIn--;
+  decrementSellIn(item);
+  
   if (isExpired(item)) {
-    item.quality = Math.max(MIN_QUALITY, item.quality - 1);
+    decrementQuality(item);
   }
 }
