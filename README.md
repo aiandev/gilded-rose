@@ -29,7 +29,7 @@ app/                    # Main application code
 ├── helper.ts          # Utility functions
 ├── constants/         # Application constants
 ├── factory/           # Quality updater factory pattern
-└── updaters/          # Item-specific quality update logic
+└── updaters/          # Item-specific update logic
 
 test/                  # Test suites
 ├── jest/             # Jest test files
