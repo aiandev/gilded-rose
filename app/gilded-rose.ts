@@ -1,7 +1,4 @@
-import { itemNames, MAX_QUALITY, MIN_QUALITY } from "./constants";
 import { updateItem } from "./factory/quality-updater-factory";
-import { isExpired } from "./helper";
-
 export class Item {
   name: string;
   sellIn: number;
@@ -18,7 +15,6 @@ export class Item {
 
 export class GildedRose {
   items: Array<Item>;
-
   constructor(items = [] as Array<Item>) {
     this.items = items;
   }
