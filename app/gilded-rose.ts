@@ -1,4 +1,5 @@
 import { itemNames, MAX_QUALITY, MIN_QUALITY } from "./constants";
+import { updateItem } from "./factory/quality-updater-factory";
 import { isExpired } from "./helper";
 
 export class Item {
@@ -24,19 +25,7 @@ export class GildedRose {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-
-      if (this.items[i].name == itemNames.SULFURAS) {
-        continue;
-      }
-
-      this.updateQualityItem(this.items[i]);
-    
-      // decrease sellIn for all items except Sulfuras which already ignored at the beginning of the loop
-      this.items[i].sellIn = this.items[i].sellIn - 1;
-
-      if (isExpired(this.items[i])) {
-        this.updateQualityExpiredItem(this.items[i]);
-      }
+       updateItem(this.items[i]);
     }
 
     return this.items;
