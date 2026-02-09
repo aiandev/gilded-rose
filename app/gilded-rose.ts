@@ -1,3 +1,5 @@
+import { itemNames, MAX_QUALITY, MIN_QUALITY } from "./constants";
+
 export class Item {
   name: string;
   sellIn: number;
@@ -11,15 +13,6 @@ export class Item {
   }
 }
 
-const Max_QUALITY = 50;
-const Min_QUALITY = 0;
-
-const productsNames = {
-  AGED_BRIE: "Aged Brie",
-  SULFURAS: "Sulfuras, Hand of Ragnaros",
-  BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert"
-}
-
 
 export class GildedRose {
   items: Array<Item>;
@@ -31,7 +24,7 @@ export class GildedRose {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
 
-      if (this.items[i].name == productsNames.SULFURAS) {
+      if (this.items[i].name == itemNames.SULFURAS) {
         continue;
       }
 
@@ -53,43 +46,43 @@ export class GildedRose {
   }
 
   updateQualityItem(item: Item) {
-    if (item.name == productsNames.SULFURAS) {
+    if (item.name == itemNames.SULFURAS) {
       return;
     }
 
     const increasingQualityItems = [
-      productsNames.AGED_BRIE,
-      productsNames.BACKSTAGE_PASSES,
-    ];
+      itemNames.AGED_BRIE,
+      itemNames.BACKSTAGE,
+    ]
 
     if (increasingQualityItems.includes(item.name)) {
         
-      item.quality = Math.min(item.quality + 1, Max_QUALITY);
+      item.quality = Math.min(item.quality + 1, MAX_QUALITY);
 
-      if (item.name == productsNames.BACKSTAGE_PASSES) {
+      if (item.name == itemNames.BACKSTAGE) {
         if (item.sellIn < 11) {
-          item.quality = Math.min(item.quality + 1, Max_QUALITY);
+          item.quality = Math.min(item.quality + 1, MAX_QUALITY);
         }
         if (item.sellIn < 6) {
-          item.quality = Math.min(item.quality + 1, Max_QUALITY); 
+          item.quality = Math.min(item.quality + 1, MAX_QUALITY); 
         }
       }
     } else { 
-      item.quality = Math.max(item.quality - 1, Min_QUALITY);
+      item.quality = Math.max(item.quality - 1, MIN_QUALITY);
     }
   }
 
   updateQualityExpiredItem(item: Item) {
-    if(item.name == productsNames.SULFURAS ||  this.isExpired(item) == false){
+    if(item.name == itemNames.SULFURAS ||  this.isExpired(item) == false){
       return;
     }
-    if (item.name == productsNames.AGED_BRIE) {
-      item.quality = Math.min(item.quality + 1, Max_QUALITY);
+    if (item.name == itemNames.AGED_BRIE) {
+      item.quality = Math.min(item.quality + 1, MAX_QUALITY);
     } else {
-      if (item.name == productsNames.BACKSTAGE_PASSES) {
-        item.quality = Min_QUALITY;
+      if (item.name == itemNames.BACKSTAGE) {
+        item.quality = MIN_QUALITY;
       } else {
-        item.quality = Math.max(item.quality - 1, Min_QUALITY);
+        item.quality = Math.max(item.quality - 1, MIN_QUALITY);
       }
     }
   }
