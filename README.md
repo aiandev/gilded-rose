@@ -24,14 +24,14 @@ You can run TypeScript scripts using either `ts-node` (installed globally or as 
 ## Project Structure
 
 ```
-app/                    # Main application code
+app/                   # Main application code
 ├── gilded-rose.ts     # Core GildedRose class and Item model
 ├── helper.ts          # Utility functions
 ├── constants/         # Application constants
-├── factory/           # Quality updater factory pattern
+├── factory/           # Updater factory pattern
 └── updaters/          # Item-specific update logic
 
-test/                  # Test suites
+test/                 # Test suites
 ├── jest/             # Jest test files
 ├── mocha/            # Mocha test files
 ├── vitest/           # Vitest test files
@@ -51,7 +51,7 @@ npm install
 
 ## Run the unit tests from the Command-Line
 
-There are two unit test frameworks to choose from, Jest and Mocha.
+There are two unit test frameworks included in this repo: Jest and Mocha. The primary test implementation uses Jest.
 
 ```sh
 npm run test:jest
