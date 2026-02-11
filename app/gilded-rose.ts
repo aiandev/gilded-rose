@@ -1,4 +1,4 @@
-import { updateItem } from "./factory/quality-updater-factory";
+import { updateItem } from "./registry/updater-selector";
 export class Item {
   name: string;
   sellIn: number;
@@ -15,7 +15,7 @@ export class Item {
 
 export class GildedRose {
   items: Array<Item>;
-  constructor(items = [] as Array<Item>) {
+  constructor(items: Array<Item> = []) {
     this.items = items;
   }
 
